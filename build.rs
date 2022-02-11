@@ -1,6 +1,5 @@
 use std::fs::OpenOptions;
 use std::io::Write;
-use std::path::Path;
 use chrono::prelude::*;
 
 fn main() {
