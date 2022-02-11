@@ -41,15 +41,18 @@ body {
 
 pre {
     margin: 1ex;
-    font-size: large;
 }
 
 a {
     color: aqua;
 }
 
-@media (min-width: 5cm) {
+@media (min-width: 55em) {
     .main {
         max-width: 800px;
+    }
+
+    pre {
+        font-size: large;
     }
 }

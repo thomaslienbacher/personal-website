@@ -11,6 +11,12 @@ async fn index(_req: HttpRequest) -> impl Responder {
         .body(include_str!("../static/index.html"))
 }
 
+async fn robots(_req: HttpRequest) -> impl Responder {
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(include_str!("../res/robots.txt"))
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let cert_file_path = std::env::var("CERT_FILE").unwrap_or_else(|_| {
@@ -45,6 +51,7 @@ async fn main() -> std::io::Result<()> {
         HttpServer::new(|| {
             App::new()
                 .wrap(middleware::Logger::default())
+                .service(web::resource("/robots.txt").route(web::get().to(robots)))
                 .service(web::resource("/").route(web::get().to(index)))
                 .service(Files::new("/static", "static"))
         })
@@ -54,6 +61,7 @@ async fn main() -> std::io::Result<()> {
     } else {
         HttpServer::new(|| {
             App::new()
+                .service(web::resource("/robots.txt").route(web::get().to(robots)))
                 .service(web::resource("/").route(web::get().to(index)))
                 .service(Files::new("/static", "static"))
         })
