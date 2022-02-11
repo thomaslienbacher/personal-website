@@ -1,0 +1,55 @@
+body {
+    background-color: black;
+    color: rgb(240, 240, 240);
+    font-family: Garamond, serif;
+}
+
+.main {
+    margin: auto;
+}
+
+.header {
+    text-align: center;
+}
+
+.header > h1 {
+    margin-bottom: 0;
+}
+
+.header > h3 {
+    margin-top: 3pt;
+    margin-bottom: 2em;
+}
+
+.sc {
+    font-variant: small-caps;
+}
+
+.section > .title {
+    color: rgb(220, 220, 220);
+}
+
+.section > .content {
+
+}
+
+.footer {
+    margin-top: 2em;
+    font-size: 80%;
+    font-style: italic;
+}
+
+pre {
+    margin: 1ex;
+    font-size: large;
+}
+
+a {
+    color: aqua;
+}
+
+@media (min-width: 5cm) {
+    .main {
+        max-width: 800px;
+    }
+}
