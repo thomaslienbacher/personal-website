@@ -1,6 +1,6 @@
 [package]
 name = "personal-website"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["Thomas Lienbacher <lienbacher.tom@gmail.com>"]
 build = "build.rs"
@@ -12,6 +12,7 @@ env_logger = "0.9"
 rustls = "0.18"
 actix-web = { version = "3", features = ["rustls"] }
 actix-files = "0.3"
+dotenv = "0.15"
 
 [build-dependencies]
 chrono = "0.4"

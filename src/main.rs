@@ -4,6 +4,8 @@ use actix_files::Files;
 use actix_web::{middleware, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 use rustls::internal::pemfile::{certs, pkcs8_private_keys};
 use rustls::{NoClientAuth, ServerConfig};
+use dotenv::dotenv;
+
 
 async fn index(_req: HttpRequest) -> impl Responder {
     HttpResponse::Ok()
@@ -19,6 +21,8 @@ async fn robots(_req: HttpRequest) -> impl Responder {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+
     let cert_file_path = std::env::var("CERT_FILE").unwrap_or_else(|_| {
         panic!("Please set CERT_FILE environment variable (fullchain.pem)!")
     });

@@ -1,3 +1,4 @@
 /target
 .idea
 /static/index.html
+.env
