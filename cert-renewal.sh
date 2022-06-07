@@ -1,6 +1,6 @@
 #!/bin/sh
 
 systemctl start httpd
-certbot renew   
+certbot renew --webroot-path /var/www/html/
 systemctl stop httpd
 
