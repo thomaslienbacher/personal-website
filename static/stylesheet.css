@@ -64,3 +64,7 @@ a {
         font-size: large;
     }
 }
+
+p {
+    text-align: justify;
+}
