@@ -1,5 +1,5 @@
 use actix_files::Files;
-use actix_web::{middleware, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
+use actix_web::{App, HttpRequest, HttpResponse, HttpServer, middleware, Responder, web};
 
 async fn index(_req: HttpRequest) -> impl Responder {
     HttpResponse::Ok()
@@ -30,7 +30,7 @@ async fn main() -> std::io::Result<()> {
                 .wrap(middleware::Logger::default())
                 .service(web::resource("/robots.txt").route(web::get().to(robots)))
                 .service(web::resource("/").route(web::get().to(index)))
-                .service(Files::new("/static", "static"))
+                .service(Files::new("/static", "static").prefer_utf8(true))
         })
             .bind("localhost:8001")?
             .run()
@@ -40,7 +40,7 @@ async fn main() -> std::io::Result<()> {
             App::new()
                 .service(web::resource("/robots.txt").route(web::get().to(robots)))
                 .service(web::resource("/").route(web::get().to(index)))
-                .service(Files::new("/static", "static"))
+                .service(Files::new("/static", "static").prefer_utf8(true))
         })
             .bind("localhost:8001")?
             .run()
