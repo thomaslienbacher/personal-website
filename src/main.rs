@@ -29,6 +29,7 @@ async fn main() -> std::io::Result<()> {
     let seccomp_filter = SeccompFilter::new(
         vec![
             // these syscalls are always allowed with all arguments
+            (libc::SYS_uname, vec![]),
             (libc::SYS_getcwd, vec![]),
             (libc::SYS_close, vec![]),
             (libc::SYS_epoll_wait, vec![]),
