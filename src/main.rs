@@ -110,9 +110,12 @@ async fn main() -> std::io::Result<()> {
              ]),
             (libc::SYS_fcntl,
              vec![
-                 // second arg (cmd) may only be F_DUPFD_CLOEXEC
+                 // second arg (cmd) may only be F_DUPFD_CLOEXEC or F_GETFD
                  SeccompRule::new(vec![
                      SeccompCondition::new(1, SeccompCmpArgLen::Dword, SeccompCmpOp::Eq, libc::F_DUPFD_CLOEXEC as u64).unwrap(),
+                 ]).unwrap(),
+                 SeccompRule::new(vec![
+                     SeccompCondition::new(1, SeccompCmpArgLen::Dword, SeccompCmpOp::Eq, libc::F_GETFD as u64).unwrap(),
                  ]).unwrap(),
              ]),
             (libc::SYS_prctl,
