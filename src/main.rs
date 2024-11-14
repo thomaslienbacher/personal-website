@@ -42,6 +42,7 @@ async fn main() -> std::io::Result<()> {
             (libc::SYS_read, vec![]),
             (libc::SYS_write, vec![]),
             (libc::SYS_fstat, vec![]),
+            (libc::SYS_faccessat2, vec![]),
 
             // TODO: i dont know if these syscalls are dangerous or if they need to be restricted
             (libc::SYS_rt_sigprocmask, vec![]),
