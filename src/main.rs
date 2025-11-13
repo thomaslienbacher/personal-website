@@ -111,12 +111,15 @@ async fn main() -> std::io::Result<()> {
              ]),
             (libc::SYS_fcntl,
              vec![
-                 // second arg (cmd) may only be F_DUPFD_CLOEXEC or F_GETFD
+                 // second arg (cmd) may only be F_DUPFD_CLOEXEC or F_GETFD or F_GETFL
                  SeccompRule::new(vec![
                      SeccompCondition::new(1, SeccompCmpArgLen::Dword, SeccompCmpOp::Eq, libc::F_DUPFD_CLOEXEC as u64).unwrap(),
                  ]).unwrap(),
                  SeccompRule::new(vec![
                      SeccompCondition::new(1, SeccompCmpArgLen::Dword, SeccompCmpOp::Eq, libc::F_GETFD as u64).unwrap(),
+                 ]).unwrap(),
+                 SeccompRule::new(vec![
+                     SeccompCondition::new(1, SeccompCmpArgLen::Dword, SeccompCmpOp::Eq, libc::F_GETFL as u64).unwrap(),
                  ]).unwrap(),
              ]),
             (libc::SYS_prctl,
@@ -205,7 +208,7 @@ async fn main() -> std::io::Result<()> {
     stdout().lock().flush().unwrap();
     seccompiler::apply_filter_all_threads(&bpf_program).unwrap();
     println!("Applied filter");
-    println!("Starting http server at localhost:8001");
+    println!("Starting server at http://localhost:8001");
 
     if std::env::var("RUST_LOG").is_ok() {
         HttpServer::new(|| {
