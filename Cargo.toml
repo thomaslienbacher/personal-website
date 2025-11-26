@@ -1,18 +1,16 @@
 [package]
 name = "personal-website"
-version = "0.5.0"
-edition = "2021"
+version = "0.6.0"
+edition = "2024"
 authors = ["Thomas Lienbacher <lienbacher.tom@gmail.com>"]
 build = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-env_logger = "0.10"
+env_logger = "0.11"
 actix-web = "4"
 actix-files = "0.6"
-seccompiler = "0.4"
-libc = "0.2.144"
 
 [build-dependencies]
 chrono = "0.4"
