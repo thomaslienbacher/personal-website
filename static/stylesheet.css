@@ -1,3 +1,7 @@
+:root {
+    font-size: 15pt;
+}
+
 body {
     background-color: black;
     color: rgb(240, 240, 240);
@@ -6,6 +10,7 @@ body {
 
 .main {
     margin: auto;
+    max-width: 50em;
 }
 
 .header {
@@ -17,7 +22,7 @@ body {
 }
 
 .header > h2 {
-    margin-top: 3pt;
+    margin-top: 0.1em;
     margin-bottom: 2em;
 }
 
@@ -26,7 +31,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.17em;
+    font-size: 1.2em;
 }
 
 .sc {
@@ -43,25 +48,23 @@ h2 {
 
 .footer {
     margin-top: 2em;
-    font-size: 80%;
+    font-size: 0.8em;
     font-style: italic;
+    margin-bottom: 1em;
 }
 
 pre {
-    margin: 1ex;
+    margin: 1em;
+    font-size: 0.9em;
 }
 
 a {
     color: aqua;
 }
 
-@media (min-width: 55em) {
-    .main {
-        max-width: 800px;
-    }
-
-    pre {
-        font-size: large;
+@media (min-resolution: 250dpi) {
+    body {
+        font-size: 160%;
     }
 }
 
